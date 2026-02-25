@@ -1,0 +1,35 @@
+                          PanelOLS Estimation Summary                           
+================================================================================
+Dep. Variable:                    IFI   R-squared:                        0.5192
+Estimator:                   PanelOLS   R-squared (Between):             -6.6797
+No. Observations:                 372   R-squared (Within):               0.0704
+Date:                Wed, Feb 25 2026   R-squared (Overall):             -2.0442
+Time:                        04:52:31   Log-likelihood                    672.36
+Cov. Estimator:             Clustered                                           
+                                        F-statistic:                      63.185
+Entities:                           3   P-value                           0.0000
+Avg Obs:                       124.00   Distribution:                   F(4,234)
+Min Obs:                       120.00                                           
+Max Obs:                       132.00   F-statistic (robust):          5.852e+17
+                                        P-value                           0.0000
+Time periods:                     132   Distribution:                   F(4,234)
+Avg Obs:                       2.8182                                           
+Min Obs:                       1.0000                                           
+Max Obs:                       3.0000                                           
+                                                                                
+                                 Parameter Estimates                                  
+======================================================================================
+                    Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+--------------------------------------------------------------------------------------
+const                 -1.0867     0.0816    -13.324     0.0000     -1.2473     -0.9260
+std_ln_FRISK          -0.0122     0.0035    -3.4695     0.0006     -0.0191     -0.0053
+unemployment_rate      0.0010     0.0027     0.3752     0.7079     -0.0043      0.0063
+inflation_index        0.0175     0.0010     17.729     0.0000      0.0155      0.0194
+conexiones_moviles    -0.0009     0.0009    -1.0853     0.2789     -0.0026      0.0008
+======================================================================================
+
+F-test for Poolability: 6.4777
+P-value: 0.0000
+Distribution: F(133,234)
+
+Included effects: Entity, Time
