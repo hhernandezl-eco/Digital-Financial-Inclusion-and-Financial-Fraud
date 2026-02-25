@@ -1,4 +1,4 @@
-# {Digital Financial Inclusion and Financial Fraud: Evidence from Self-Reported Complaints on Social Media using Multilingual Transformers Models
+# Digital Financial Inclusion and Financial Fraud: Evidence from Self-Reported Complaints on Social Media using Multilingual Transformers Models
 
 ## Research Overview
 This repository contains the computational and econometric replication materials for the study on the impact of self-reported financial fraud on Digital Financial Inclusion. The methodology integrates natural language processing and panel data econometrics. The code is structured to execute three analytical stages. First, it implements multilingual transformer models to extract embeddings from a corpus of social media complaints in Spanish and Portuguese. Second, it applies dimensionality reduction and density-based clustering to categorize fraud typologies. Third, it executes panel data regression models with fixed effects to estimate the statistical relationship between the constructed index and financial inclusion metrics across the analyzed jurisdictions.
@@ -7,6 +7,7 @@ This repository contains the computational and econometric replication materials
 
 The project is organized into modular stages to ensure a clean data pipeline and seamless replication:
 
+```text
 ├── "data"
 │   ├── "raw"
 │   │   ├── "dataset_fraude_pt.csv"
