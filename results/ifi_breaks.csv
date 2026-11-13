@@ -1,0 +1,14 @@
+country,component,date,kind,dlog,factor
+Colombia,acc,2022-11-01,outlier -> missing,-0.6678253876276381,
+Colombia,acc,2023-10-01,outlier -> missing,0.40598395556845546,
+Colombia,acc,2018-04-01,zero/missing,,
+Colombia,acc,2018-05-01,zero/missing,,
+Colombia,acc,2022-07-01,break -> spliced,0.010937688656014188,0.6650216269150143
+Colombia,acc,2023-11-01,break -> spliced,0.009507316347907135,0.516730872574494
+Colombia,dep,2018-01-01,outlier -> missing,0.35692582821097574,
+Colombia,dep,2022-11-01,outlier -> missing,-0.6500218930649669,
+Colombia,dep,2023-10-01,outlier -> missing,0.40135492185485216,
+Colombia,dep,2018-04-01,zero/missing,,
+Colombia,dep,2018-05-01,zero/missing,,
+Colombia,dep,2022-07-01,break -> spliced,-0.0029784281752540664,0.6477888626711072
+Colombia,dep,2023-11-01,break -> spliced,-0.01054216654222273,0.5350281031754565

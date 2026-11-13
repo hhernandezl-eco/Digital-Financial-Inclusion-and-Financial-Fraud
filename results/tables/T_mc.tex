@@ -1,0 +1,37 @@
+\begin{tabular}{@{} L{7.6cm} cc @{}}
+\toprule
+\textbf{Test} & \textbf{(A) Trend-stat.} & \textbf{(B) Stoch. trend} \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Levels regressions (IFI on FRISK, two-way fixed effects)}} \\
+Clustered by country, $t(2)$ critical values (old procedure) & 0.017 & 0.022 \\
+Clustered by country, normal critical values & 0.215 & 0.347 \\
+Driscoll--Kraay, bandwidth 12 & 0.082 & 0.617 \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{First differences, local projections (new procedure): one restriction}} \\
+Average response $h=1,\dots,6$: Chile & 0.043 & 0.054 \\
+Average response $h=1,\dots,6$: Mexico & 0.046 & 0.050 \\
+Average response $h=1,\dots,6$: Colombia & 0.049 & 0.042 \\
+Average response $h=1,\dots,6$: mean group & 0.046 & 0.044 \\
+Cumulative effect, distributed lags: by country (average) & 0.069 & 0.063 \\
+Cumulative effect, distributed lags: pooled (Driscoll--Kraay) & 0.083 & 0.089 \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Tests of several restrictions with HAC covariance (not used)}} \\
+Six responses $\beta_{c,h}$ jointly zero (per country, average) & 0.262 & 0.256 \\
+Seven distributed-lag coefficients jointly zero (per country, average) & 0.180 & 0.176 \\
+Seven distributed-lag coefficients jointly zero (pooled) & 0.182 & 0.173 \\
+Granger, three lags (per country, average) & 0.097 & 0.093 \\
+Granger, three lags (joint, 3 countries) & 0.229 & 0.208 \\
+Granger, six lags (per country, average) & 0.159 & 0.150 \\
+Granger, six lags (joint, 3 countries) & 0.590 & 0.559 \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Other procedures used in the application}} \\
+Sup-$t$ bands, any horizon: Chile & 0.088 & 0.091 \\
+Sup-$t$ bands, any horizon: Mexico & 0.091 & 0.073 \\
+Sup-$t$ bands, any horizon: Colombia & 0.092 & 0.083 \\
+Equal average responses across countries (two restrictions) & 0.064 & 0.051 \\
+Wild-bootstrap Granger, three lags (per country, average) & 0.039 & 0.043 \\
+Wild-bootstrap Granger, three lags (joint) & 0.030 & 0.047 \\
+Wild-bootstrap Granger, six lags (per country, average) & 0.051 & 0.051 \\
+Wild-bootstrap Granger, six lags (joint) & 0.053 & 0.043 \\
+\bottomrule
+\end{tabular}

@@ -1,0 +1,13 @@
+controls,dep,trend,b,se,n
+no controls,pooled IFI,False,0.016124782354675442,0.003506075920248589,384
+no controls,pooled IFI,True,0.002774967848826711,0.0005887872163445606,384
+no controls,within-normalized IFI,False,-0.022676069790382017,0.00686686397003319,384
+no controls,within-normalized IFI,True,-0.006245309965060943,0.003901407330101772,384
+"unemployment, mobile, activity (no prices)",pooled IFI,False,0.0051830456016487975,0.0015177417424023529,360
+"unemployment, mobile, activity (no prices)",pooled IFI,True,-0.0017031140005428,0.0008119008451770237,360
+"unemployment, mobile, activity (no prices)",within-normalized IFI,False,-0.015046284904711488,0.0008784224466277689,360
+"unemployment, mobile, activity (no prices)",within-normalized IFI,True,-0.006603983790232066,0.00226010600493762,360
+"unemployment, activity",pooled IFI,False,0.01514495360342432,0.0012128679549678544,384
+"unemployment, activity",pooled IFI,True,0.0035133012188449126,0.0012101472002727868,384
+"unemployment, activity",within-normalized IFI,False,-0.018516061642053782,0.0013552938900383091,384
+"unemployment, activity",within-normalized IFI,True,-0.005709456586680133,0.002363780476303171,384

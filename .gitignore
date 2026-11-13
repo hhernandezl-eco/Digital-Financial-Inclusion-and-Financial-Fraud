@@ -1,0 +1,16 @@
+# posts, embeddings and models never leave the local machine
+data/private/*
+!data/private/README.md
+*.npy
+*.parquet
+*.jsonl
+
+# credentials
+.env
+*.token
+
+# generated
+results/results.pkl
+__pycache__/
+*.pyc
+data/derived/

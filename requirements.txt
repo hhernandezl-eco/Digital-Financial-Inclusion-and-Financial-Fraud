@@ -1,0 +1,18 @@
+# econometrics (src/econometrics)
+numpy>=1.23
+pandas>=2.0
+scipy>=1.10
+statsmodels>=0.14
+linearmodels>=5.3
+matplotlib>=3.7
+openpyxl>=3.1
+
+# language models and clustering (src/nlp)
+torch
+transformers
+scikit-learn
+tqdm
+pyarrow
+
+# data collection (src/collection)
+tweepy>=4.14
