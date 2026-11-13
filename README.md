@@ -70,7 +70,8 @@ python collect_posts.py --lang pt --start 2014-01-01 --end 2024-12-31 --out ../.
 cd ../nlp
 python 00_finetune_classifier.py   # needs data/private/annotated_posts.csv (text, label)
 python 01_embeddings.py
-python 02_clustering.py
+python 01b_predict.py
+python 02_clustering.py           # DBSCAN on the 768-d embeddings of the flagged posts: cosine distance, eps 0.5, min_samples 5
 # assign country (profile location) and typology (manual mapping of clusters) -> data/private/classified.csv
 python 03_aggregate_counts.py
 ```

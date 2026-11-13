@@ -1,12 +1,13 @@
 """
-Step 2. Dimensionality reduction and density-based clustering of the embeddings.
+Step 2. Density-based clustering of the embeddings of the posts flagged as fraud complaints.
 
-1. Incremental PCA to 50 components over the stored embeddings.
-2. Standardization of the components.
-3. DBSCAN (eps = 0.5, min_samples = 10, Euclidean distance) on a random sample of 50,000 posts.
-4. The remaining posts receive the label of their nearest neighbor in the sample (1-NN).
+DBSCAN runs directly on the 768-dimensional embeddings (no dimensionality reduction), with cosine distance,
+eps = 0.5 and min_samples = 5 (Section 3.4 of the paper). Posts that DBSCAN leaves as noise get the label -1.
 
-Writes data/private/clusters.csv with one row per post (same order as corpus.parquet).
+Input : data/private/embeddings/*.npy (step 1) and data/private/predictions.csv (step 1b; column `fraud`, one row per post,
+        same order as corpus.parquet).
+Output: data/private/clusters.csv with columns  row (position in corpus.parquet) and  cluster.
+
 Clusters are then mapped by hand to the typologies of the paper after inspecting their most frequent terms.
 """
 from pathlib import Path
@@ -14,31 +15,22 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.cluster import DBSCAN
-from sklearn.decomposition import IncrementalPCA
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.preprocessing import StandardScaler
 
 PRIVATE = Path(__file__).resolve().parents[2] / "data" / "private"
-SEED = 0
+EPS, MIN_SAMPLES = 0.5, 5
 
 
-def reduce(dir_emb: Path, comps: int = 50) -> np.ndarray:
-    files = sorted(dir_emb.glob("*.npy"))
-    ipca = IncrementalPCA(n_components=comps)
-    for f in files:
-        ipca.partial_fit(np.load(f))
-    return np.vstack([ipca.transform(np.load(f)).astype(np.float32) for f in files])
+def load_embeddings(dir_emb: Path) -> np.ndarray:
+    return np.vstack([np.load(f) for f in sorted(dir_emb.glob("*.npy"))]).astype(np.float32)
 
 
-def cluster(X: np.ndarray, sample: int = 50000) -> np.ndarray:
-    Z = StandardScaler().fit_transform(X)
-    rng = np.random.default_rng(SEED)
-    idx = rng.choice(len(Z), min(sample, len(Z)), replace=False)
-    lab = DBSCAN(eps=0.5, min_samples=10, metric="euclidean", n_jobs=-1).fit_predict(Z[idx])
-    knn = KNeighborsClassifier(n_neighbors=1, n_jobs=-1).fit(Z[idx], lab)
-    return knn.predict(Z)
+def cluster(X: np.ndarray) -> np.ndarray:
+    return DBSCAN(eps=EPS, min_samples=MIN_SAMPLES, metric="cosine", algorithm="brute", n_jobs=-1).fit_predict(X)
 
 
 if __name__ == "__main__":
-    X = reduce(PRIVATE / "embeddings")
-    pd.DataFrame({"cluster": cluster(X)}).to_csv(PRIVATE / "clusters.csv", index=False)
+    X = load_embeddings(PRIVATE / "embeddings")
+    fraud = pd.read_csv(PRIVATE / "predictions.csv")["fraud"].to_numpy().astype(bool)
+    assert len(fraud) == len(X), "predictions.csv and the embeddings must have one row per post"
+    rows = np.flatnonzero(fraud)
+    pd.DataFrame({"row": rows, "cluster": cluster(X[rows])}).to_csv(PRIVATE / "clusters.csv", index=False)
